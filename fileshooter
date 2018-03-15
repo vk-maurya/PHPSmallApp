@@ -1,0 +1,107 @@
+#this is index file
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Shooter</title>
+    
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+   <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    
+   <script>
+    $(function() {
+
+    var bar = $('.bar');
+    var percent = $('.percent');
+    var status = $('#status');
+
+    $('form').ajaxForm({
+        beforeSend: function() {
+            status.empty();
+            var percentVal = '0%';
+            bar.width(percentVal);
+            percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal);
+            percent.html(percentVal);
+        },
+        complete: function(xhr) {
+            status.html(xhr.responseText);
+        }
+    });
+}); 
+    
+    </script>
+    
+    
+</head>
+<body>
+    <div class="container">
+            <br><br>
+            <h3>File shooter</h3>
+        <div class="col-xs-5">
+            <form action="upload.php" method="post">
+        
+        <input type="text" name="touser" class="form-control" placeholder=" TO user Email ID">
+        <br>
+        <input type="text" name="fromuser" class="form-control" placeholder=" your Email ID">
+        <br>
+        <input type="text" name="message" class="form-control" placeholder="Enter your Message">
+        <br>
+        <input type="file" name="userfiles"  id="userfiles" class="form-control" multiple>
+        <br>
+            <div class="progress">
+            <div class="bar"></div >
+            <div class="percent">0%</div >
+            </div>
+
+            <div id="status"></div>
+        
+        <br>
+        <input type="submit" name="submit" value="submit" class="btn btn-primary">
+        
+        
+        
+    </form>
+       
+      
+        </div>
+    <div class=""></div>
+        
+    </div>
+    
+    
+</body>
+</html>
+
+
+# on this page form will go to upload that file
+
+<?php
+
+if(isset($_POST['submit']))
+{
+    
+    
+    
+    
+    
+}
+    
+
+
+
+
+?>
